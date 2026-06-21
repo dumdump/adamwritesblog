@@ -12,11 +12,11 @@
     #thumbnail-container {
         display: grid;
         grid-template-columns: calc(100%/3) calc(100%/3) calc(100%/3);
+        justify-items: center;
     }
 
     .thumbnail {
         width:90%;
-        justify-self:center;
     }
 }
 
