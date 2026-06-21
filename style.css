@@ -1,0 +1,149 @@
+@font-face {
+    font-family: 'Newsreader';
+    src: url(fonts/newsreader.ttf); 
+}
+
+@media (orientation:landscape) {
+    #content-container {
+        margin-left: 25%;
+        margin-right: 25%;
+    }
+
+    #thumbnail-container {
+        display: grid;
+        grid-template-columns: calc(100%/3) calc(100%/3) calc(100%/3);
+    }
+
+    .thumbnail {
+        width:90%;
+        justify-self:center;
+    }
+}
+
+@media (orientation:portrait) {
+    #content-container {
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    #thumbnail-container {
+        display:flexbox;
+        flex-direction:column;
+    }
+
+    .thumbnail {
+        width:50%;
+        justify-self:center;
+    }
+}
+
+body {
+    font-family: 'Newsreader', serif;
+    padding: 3%;
+}
+
+h1 {
+    font-weight: normal;
+    font-size:45px;
+    margin-block-start: 1.33em;
+}
+
+p {
+    line-height: 1.4em;
+    font-size: 16px;
+}
+
+.navbar-link {
+    color:black;
+    text-decoration: none;
+    margin-left: 1%;
+    margin-right: 1%;
+    font-weight: bold;
+}
+
+.text-image-container {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+.text-image-caption {
+    display: flex;
+    justify-self: center;
+    margin-top: 0.5em;
+    font-size: 14px;
+    font-style: italic;
+}
+
+.text-image-location {
+    display: flex;
+    justify-self: center;
+    margin-top: 0.5em;
+    font-size: 14px;
+}
+
+.text-image {
+    display: flex;
+    justify-self: center;
+}
+
+.multiple-image-container {
+    display:flex;
+    justify-content:center;
+}
+
+.thumbnail {
+    cursor: pointer;
+    aspect-ratio: 1/1.25;
+    overflow:hidden;
+}
+
+.thumbnail-image {
+    width: 100%;
+    aspect-ratio:1/1;
+}
+
+.thumbnail-title {
+    font-weight: normal;
+    font-size:16px;
+    margin-block-start: 0.2em;
+}
+
+.back-button {
+    color:black;
+    text-decoration:none;
+    font-weight: bold;
+    display:flex;
+    justify-self:right;
+}
+
+#header-container {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 2%;
+}
+
+#logo-container {
+    justify-self: center;
+    display: flex;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    
+}
+
+#logo-picture {
+    justify-self: center;
+    display:flex;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+#logo-title {
+    display:flex;
+}
+
+#navbar-container {
+    display: flex;
+    justify-content: center;
+}
+
+
