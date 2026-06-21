@@ -29,11 +29,11 @@
     #thumbnail-container {
         display:flexbox;
         flex-direction:column;
+        align-items: center;
     }
 
     .thumbnail {
         width:50%;
-        justify-self:center;
     }
 }
 
