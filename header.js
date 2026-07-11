@@ -14,3 +14,15 @@ headerElement.innerHTML = `
         <span class="navbar-divider">&middot;</span>
         <a href="` + homePath + `about/index.html" class="navbar-link">about</a>
     </div>`;
+
+
+function iOS() {
+  return [
+    'iPhone Simulator',
+    'iPod Simulator',
+    'iPhone',
+    'iPod'
+  ].includes(navigator.platform)
+}
+
+document.getElementsByTagName("body")[0].setAttribute("data-ios", iOS());

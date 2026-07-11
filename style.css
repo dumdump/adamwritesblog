@@ -212,3 +212,26 @@ p {
     display: flex;
     justify-content: center;
 }
+
+.iphone-fullscreen-element {
+    width: 100vw;
+    height: 100vh;
+    height: -webkit-fill-available;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+    background-color: black;
+}
+
+body:has(.iphone-fullscreen-element) > :not(.iphone-fullscreen-element):not(.iphone-fullscreen-element *) {
+    pointer-events: none;
+}
+
+body:has(.iphone-fullscreen-element) .iphone-fullscreen-element .gallery-control-container *{
+    pointer-events: auto !important;
+}
+
+body:has(.iphone-fullscreen-element) {
+    overflow: hidden;
+}
