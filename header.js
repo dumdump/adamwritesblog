@@ -1,4 +1,4 @@
-var homePath = "file:///Users/adampeng/Documents/coding/adamwritesblog/";
+var homePath = "https://dumdump.github.io/adamwritesblog/";
 
 let headerElement = document.querySelector("#header-container");
 headerElement.innerHTML = `
