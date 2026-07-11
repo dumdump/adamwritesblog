@@ -142,7 +142,8 @@ thumbnails.forEach(element => {
             returnArrow.addEventListener("click", (event) => { document.exitFullscreen(); });
 
             //idling
-            window.addEventListener('touchstart', resetIdleTimer);
+            window.addEventListener('mousemove', resetIdleTimer);
+            window.addEventListener('keydown', resetIdleTimer);
 
             resetIdleTimer();
         }
