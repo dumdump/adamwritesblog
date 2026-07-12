@@ -107,45 +107,54 @@ thumbnails.forEach(element => {
             element.style.cursor = "pointer";
         } else {
             //entering fullscreen--------------
-            element.classList.add("fullscreen-element");
-            window.addEventListener("keydown", arrowKeyPressed);
-            element.innerHTML = `
-                <img src="` + galleryFolderPath + `1` + fileName + `" class="fullscreened-image" data-size="` + size + `" data-filename="` + fileName + `">
-                <div class="gallery-control-container">
-                    <div class="gallery-control-container-upper">
-                        <span class="gallery-button" id="gallery-back-button">&#8678;</span>
-                        <span class="fullscreened-title">` + titleContent + ` (1/` + size + `)</span>
-                        <span class="gallery-button" id="gallery-next-button">&#8680;</span>
+            //preload all images
+            var imageUrls = [];
+            for (var i = 1; i <= size; i++) {
+                imageUrls.push(galleryFolderPath + i + fileName);
+            }
+            preloadImages(imageUrls).then(() => {
+                element.classList.add("fullscreen-element");
+                window.addEventListener("keydown", arrowKeyPressed);
+                element.innerHTML = `
+                    <img src="` + galleryFolderPath + `1` + fileName + `" class="fullscreened-image" data-size="` + size + `" data-filename="` + fileName + `">
+                    <div class="gallery-control-container">
+                        <div class="gallery-control-container-upper">
+                            <span class="gallery-button" id="gallery-back-button">&#8678;</span>
+                            <span class="fullscreened-title">` + titleContent + ` (1/` + size + `)</span>
+                            <span class="gallery-button" id="gallery-next-button">&#8680;</span>
+                        </div>
+                        <div class="gallery-control-container-lower">
+                            <span class="gallery-button" id="gallery-return-button">&#8617;</span>
+                        </div>
                     </div>
-                    <div class="gallery-control-container-lower">
-                        <span class="gallery-button" id="gallery-return-button">&#8617;</span>
-                    </div>
-                </div>
-            `;
+                `;
 
-            //make the arrows trigger manual keydown
-            var nextArrow = document.querySelector("#gallery-next-button");
-            var pressRightArrow = new Event("keydown");
-            pressRightArrow.key = "ArrowRight";
-            nextArrow.addEventListener("click", (event) => { window.dispatchEvent(pressRightArrow); });
+                //make the arrows trigger manual keydown
+                var nextArrow = document.querySelector("#gallery-next-button");
+                var pressRightArrow = new Event("keydown");
+                pressRightArrow.key = "ArrowRight";
+                nextArrow.addEventListener("click", (event) => { window.dispatchEvent(pressRightArrow); });
 
-            var backArrow = document.querySelector("#gallery-back-button");
-            var pressLeftArrow = new Event("keydown");
-            pressLeftArrow.key = "ArrowLeft";
-            backArrow.addEventListener("click", (event) => { window.dispatchEvent(pressLeftArrow); });
+                var backArrow = document.querySelector("#gallery-back-button");
+                var pressLeftArrow = new Event("keydown");
+                pressLeftArrow.key = "ArrowLeft";
+                backArrow.addEventListener("click", (event) => { window.dispatchEvent(pressLeftArrow); });
 
-            backArrow.style.opacity = "0%";
-            backArrow.style.cursor = "default";
+                backArrow.style.opacity = "0%";
+                backArrow.style.cursor = "default";
 
-            //make return arrow trigger escape keydown
-            var returnArrow = document.querySelector("#gallery-return-button");
-            returnArrow.addEventListener("click", (event) => { document.exitFullscreen(); });
+                //make return arrow trigger escape keydown
+                var returnArrow = document.querySelector("#gallery-return-button");
+                returnArrow.addEventListener("click", (event) => { document.exitFullscreen(); });
 
-            //idling
-            window.addEventListener('mousemove', resetIdleTimer);
-            window.addEventListener('keydown', resetIdleTimer);
+                //idling
+                window.addEventListener('mousemove', resetIdleTimer);
+                window.addEventListener('keydown', resetIdleTimer);
 
-            resetIdleTimer();
+                resetIdleTimer();
+            })
+
+            
         }
     }
 
@@ -216,4 +225,17 @@ function resetIdleTimer() {
         controlContainer.classList.add('idle');
         element.style.cursor = "none";
     }, 3000);
+}
+
+function preloadImages(urls) {
+    const promises = urls.map(url => {
+        return new Promise((resolve) => {
+            const img = new Image();
+            img.src = url;
+            img.onload = () => resolve(url);
+            img.onerror = () => resolve(url);
+        });
+    });
+
+    return Promise.all(promises);
 }
