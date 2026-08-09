@@ -2,7 +2,7 @@
     font-family: 'Newsreader';
     src: url(fonts/newsreader.ttf); 
 }
-
+ 
 @media (orientation:landscape) {
     #content-container {
         margin-left: 25%;
@@ -87,7 +87,7 @@ p {
 }
 
 .multiple-image-container {
-    display:flex;
+    display: flex;
     justify-content:center;
 }
 
@@ -234,4 +234,15 @@ body:has(.iphone-fullscreen-element) .iphone-fullscreen-element .gallery-control
 
 body:has(.iphone-fullscreen-element) {
     overflow: hidden;
+}
+
+.chinese {
+    font-size: 18px;
+    font-family: "Songti TC", "SimSun", "STSong", serif;
+    font-weight: normal;
+}
+
+.chinese.alt {
+    margin-left: 2em;
+    font-family: 'KaiTi', 'Kaiti TC', 'STKaiti', serif;
 }
