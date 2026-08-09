@@ -2,6 +2,16 @@
     font-family: 'Newsreader';
     src: url(fonts/newsreader.ttf); 
 }
+
+@font-face {
+    font-family: 'customKaiti';
+    src: url(fonts/cwTeXQKai-Medium.ttf);
+}
+
+@font-face {
+    font-family: 'customSongti';
+    src: url(fonts/SourceHanSerifTC-Regular.otf);
+}
  
 @media (orientation:landscape) {
     #content-container {
@@ -238,11 +248,11 @@ body:has(.iphone-fullscreen-element) {
 
 .chinese {
     font-size: 18px;
-    font-family: "Songti TC", "Songti TC Regular", "SimSun", "STSong", serif;
+    font-family: "Songti TC", "Songti TC Regular", "SimSun", "STSong", "customSongti", serif;
     font-weight: normal;
 }
 
 .chinese.alt {
     margin-left: 2em;
-    font-family: 'KaiTi', 'Kaiti TC', 'Kaiti SC Regular', 'STKaiti', serif;
+    font-family: 'KaiTi', 'Kaiti TC', 'Kaiti SC Regular', 'STKaiti', "customKaiti", serif;
 }
