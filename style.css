@@ -248,11 +248,11 @@ body:has(.iphone-fullscreen-element) {
 
 .chinese {
     font-size: 18px;
-    font-family: -apple-system, "Songti TC", "Songti TC Regular", "SimSun", "STSong", "customSongti", serif;
+    font-family: "Songti TC", "Songti TC Regular", "SimSun", "STSong", "customSongti", serif;
     font-weight: normal;
 }
 
 .chinese.alt {
     margin-left: 2em;
-    font-family: -apple-system, 'KaiTi', 'Kaiti TC', 'Kaiti SC Regular', 'STKaiti', "customKaiti", serif;
+    font-family: 'KaiTi', 'Kaiti TC', 'Kaiti SC Regular', 'STKaiti', "customKaiti", serif;
 }
